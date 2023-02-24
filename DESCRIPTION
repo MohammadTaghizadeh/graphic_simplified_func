@@ -1,6 +1,6 @@
 Package: graphicsimpfuncs
 Type: Package
-Title: Simplified functions for graphic and plot presentation. 
+Title: Functions for beautiful and simplified graphic and plot presentation. 
 Version: 0.1.0
 Author: Mohammad Taghizadeh
 Maintainer: The package maintainer <mtaghizadeh@ut.ac.ir>
@@ -9,3 +9,6 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+usethis::use_package("ggplot2", "Suggests")
+Imports:
+  ggplot2
