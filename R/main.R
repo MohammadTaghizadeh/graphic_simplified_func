@@ -45,3 +45,7 @@ remove_gsf <- function(){
   remove.packages('graphicsimpfuncs')
 }
 
+################################################################################
+install_gsf <- function(){
+  devtools::install_github('MohammadTaghizadeh/graphic_simplified_func@master')
+}
