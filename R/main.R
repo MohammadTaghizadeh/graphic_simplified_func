@@ -40,3 +40,8 @@ mtscatterplot <- function(df, plot_name = NULL, x_lab = NULL, y_lab = NULL){
 
 }
 
+################################################################################
+remove_gsf <- function(){
+  remove.packages('graphicsimpfuncs')
+}
+
