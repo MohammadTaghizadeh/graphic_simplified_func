@@ -1,4 +1,4 @@
-Package: graphicsimpfuncs
+Package: mtgraphics
 Type: Package
 Title: Functions for beautiful and simplified graphic and plot presentation. 
 Version: 0.1.0

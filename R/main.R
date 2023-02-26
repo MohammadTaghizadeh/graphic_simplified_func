@@ -21,7 +21,7 @@ mtbarplot <- function(data, bar_lab, y_lab = NULL, x_lab = NULL,
 
 ################################################################################
 
-mtscatterplot1 <- function(x_data, y_data,
+mtscatterplot <- function(x_data, y_data,
                           plot_name = NULL, x_lab = NULL, y_lab = NULL){
   library(ggplot2)
   df <- data.frame(x = x_data, y = y_data)
@@ -51,4 +51,6 @@ remove_gsf <- function(){
 install_gsf <- function(){
   devtools::install_github('MohammadTaghizadeh/graphic_simplified_func@master')
 }
+
+
 
