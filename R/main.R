@@ -21,11 +21,11 @@ mtbarplot <- function(data, bar_lab, y_lab = NULL, x_lab = NULL,
 
 ################################################################################
 
-mtscatterplot1 <- function(data_1, data_2,
+mtscatterplot1 <- function(x_data, y_data,
                           plot_name = NULL, x_lab = NULL, y_lab = NULL){
   library(ggplot2)
-  df <- data.frame(data1 = data_1, data2 = data_2)
-  ggplot(df, aes(data1, data2)) +
+  df <- data.frame(x = x_data, y = y_data)
+  ggplot(df, aes(x, y)) +
     geom_point(alpha = 0.4, size = 3) + theme_bw() +
     theme(panel.background = element_rect(fill = 'white', color = 'black',
                                           size = 1.4),
@@ -36,8 +36,7 @@ mtscatterplot1 <- function(data_1, data_2,
           axis.text.y = element_text(size = 12, face = 'bold'),
           axis.title = element_text(size = 14, face = 'bold'),
           plot.title = element_text(size = 14, face = 'bold', hjust = 0.5)) +
-    scale_x_continuous(breaks = seq(min(data_1), max(data_1)+1, 4)) +
-    scale_y_continuous(breaks = seq(min(data_2), max(data_2)+1, 5)) +
+
 
     labs(title = plot_name, x = x_lab, y = y_lab)
 
@@ -52,26 +51,12 @@ remove_gsf <- function(){
 install_gsf <- function(){
   devtools::install_github('MohammadTaghizadeh/graphic_simplified_func@master')
 }
+install_gsf()
 
 
-library(idpr)
-hsa <- unlist(protr::getUniProt('P02768'))
-hsa
-
-scaledHydropathyLocal(hsa,
-                      plotResults = TRUE)
-
-ex_globin <- unlist(protr::getUniProt('P28316'))
-
-scaledHydropathyLocal(ex_globin,
-                      plotResults = TRUE)
-
-foldIndexR(sequence = hsa,
-           plotResults = TRUE)
+head(mtcars)
+graphicsimpfuncs::mtscatterplot(mtcars$mpg, mtcars$cyl)
 
 
-foldIndexR(sequence = ex_globin,
-           plotResults = TRUE)
 
-
-mtscatterplot1(cars$speed, cars$dist)
+graphicsimpfuncs::
