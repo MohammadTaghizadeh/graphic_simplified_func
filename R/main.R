@@ -51,12 +51,4 @@ remove_gsf <- function(){
 install_gsf <- function(){
   devtools::install_github('MohammadTaghizadeh/graphic_simplified_func@master')
 }
-install_gsf()
 
-
-head(mtcars)
-graphicsimpfuncs::mtscatterplot(mtcars$mpg, mtcars$cyl)
-
-
-
-graphicsimpfuncs::
