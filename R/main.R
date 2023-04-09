@@ -2,12 +2,14 @@
 
 ################################################################################
 
-mtbarplota <- function(d, bar_lab, y_lab = NULL, x_lab = NULL,
-                      plot_title = NULL, plwd = 2){
+mtbarplota <- function(d = c(1,2,1,4,3), bar_lab = LETTERS[1:5], y_lab = NULL,
+                       x_lab = NULL, plot_title = NULL, plwd = 2){
   df <- data.frame(col_data = d, barlab = bar_lab)
   {
   par(mar = c(6,6,6,6), lwd = plwd)
   ylim_min <- (min(df$col_data)-(sd(df$col_data)/sqrt(length(df$col_data))))
+  ifelse(min(df$col_data)>0, ylim_min <- 0, ylim_min <- ylim_min)
+  #ifelse(min(df$col_data)==1, ylim_min <- 0, ylim_min <- ylim_min)
   ylim_max <- (max(df$col_data)+(sd(df$col_data)/sqrt(length(df$col_data))))
   barplot(col_data ~ bar_lab, data = df, ylim = c(ylim_min, ylim_max),
           space = 2, border = c(2,2,2,2), col = 'skyblue',
@@ -15,11 +17,10 @@ mtbarplota <- function(d, bar_lab, y_lab = NULL, x_lab = NULL,
   )
   }
   box()
-  abline(h=0, col = 'gray')
+  abline(h=0, col = 'darkblue', lwd = 2)
 }
 
-mtbarplota(-9:9, letters[1:19], plwd = 2)
-mtbarplota(sample(-10:10, 15, replace = T), letters[1:15])
+
 ################################################################################
 
 mtscatterplot <- function(x_data, y_data,
@@ -50,7 +51,7 @@ remove_gsf <- function(){
 
 ################################################################################
 install_gsf <- function(){
-  devtools::install_github('MohammadTaghizadeh/graphic_simplified_func@master')
+  devtools::install_github('MohammadTaghizadeh/simplified_graphic_func@master')
 }
 
 ################################################################################
@@ -61,6 +62,7 @@ mtbarplotb <- function(hight_data, lab_data,
                        x_lab = 'x_lab', y_lab = 'y_lab'){
 library(ggplot2)
 df <- data.frame(d = hight_data, d_lab = lab_data)
+ifelse(nrow(df)<8, tangle <- 0, tangle <- 90)
 
 ggplot(data = df, aes(x = d_lab, y = d)) +
   geom_bar(stat = 'identity', width = 0.5,
@@ -70,7 +72,7 @@ ggplot(data = df, aes(x = d_lab, y = d)) +
         plot.margin = margin(1,1,1,1,'cm'),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = 12, face = 'bold'),
+        axis.text.x = element_text(size = 12, face = 'bold', angle = tangle),
         axis.text.y = element_text(size = 12, face = 'bold'),
         axis.title = element_text(size = 14, face = 'bold'),
         plot.title = element_text(size = 14, face = 'bold', hjust = 0.5)) +
